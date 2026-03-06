@@ -1,0 +1,42 @@
+{
+  "name": "electron-vue-app",
+  "version": "1.0.0",
+  "description": "学习测试 Electron + Vue",
+  "main": "main.js",
+  "scripts": {
+    "dev:vue": "vite",
+    "dev:electron": "wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .",
+    "dev": "concurrently --kill-others \"npm run dev:vue\" \"npm run dev:electron\"",
+    "build:vue": "vite build",
+    "build": "npm run build:vue && electron-builder",
+    "preview": "vite preview"
+  },
+  "author": "wuZhiJie",
+  "license": "ISC",
+  "build": {
+    "appId": "com.electron.vue.app",
+    "productName": "Electron Vue App",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "dist-vue/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^39.2.6",
+    "electron-builder": "^25.1.8",
+    "vite": "^6.2.1",
+    "wait-on": "^8.0.3"
+  }
+}
